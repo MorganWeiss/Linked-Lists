@@ -247,11 +247,11 @@ void SingleLinkedList<T>::push_back(const T &theData) {
 	std::unique_ptr<Node> newNode = std::make_unique<Node>(theData);
 
 	if (!head) {
-		head = std::move(theData);
+		head = std::move(newNode);
 		tail = head.get();
 	}
 	else {
-		tail->next = std::move(theData);
+		tail->next = std::move(newNode);
 		tail = tail->next.get();
 	}
 }
@@ -261,11 +261,11 @@ void SingleLinkedList<T>::push_back(T &&theData) {
 	std::unique_ptr<Node> newNode = std::make_unique<Node>(std::move(theData));
 
 	if (!head) {
-		head = std::move(theData);
+		head = std::move(newNode);
 		tail = head.get();
 	}
 	else {
-		tail->next = std::move(theData);
+		tail->next = std::move(newNode);
 		tail = tail->next.get();
 	}
 }
